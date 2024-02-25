@@ -6,7 +6,7 @@ pipeline {
   }
 
   stages {
-    stages('Checkout') {
+    stage('Checkout') {
       steps {
         git branch: 'main', credentialsId: 'TaaviNat', url: 'https://github.com/TaaviNat/FarToCel.git'
 
