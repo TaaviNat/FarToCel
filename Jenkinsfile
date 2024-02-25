@@ -1,14 +1,16 @@
 pipeline {
     agent any
+    tools {
+        maven 'Maven 3'
+    }
     environment {
         PATH = "${tool 'Maven 3'}/bin:${env.PATH}"
     }
-
     stages {
         stage('Checkout') {
             steps {
-                git branch: 'main', 
-                    credentialsId: '121ec203-0f3f-4921-b7e2-4b9420ecc132', 
+                git branch: 'main',
+                    credentialsId: '121ec203-0f3f-4921-b7e2-4b9420ecc132',
                     url: 'https://github.com/TaaviNat/FarToCel.git'
             }
         }
@@ -23,10 +25,9 @@ pipeline {
             }
         }
     }
-
     post {
-        success {
-            junit '**/target/surefire-reports/TEST-*.xml'
+        always {
+            junit '**/target/surefire-reports/*.xml'
         }
     }
 }
