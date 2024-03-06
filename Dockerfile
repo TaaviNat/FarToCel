@@ -1,8 +1,7 @@
 FROM maven:latest
-WORKDIR /App
-COPY pom.xml /App
-COPY . /App/
+WORKDIR /org.example.App
+COPY pom.xml /org.example.App
+RUN mvn dependency:go-offline
+COPY . /org.example.App/
 RUN mvn package
-CMD ["java", "-jar", "target/FarToCelDocker.jar"]
-
-ENTRYPOINT ["java", "-jar", "target/FarToCelDocker.jar"]
+CMD ["java", "-jar", "target/fartoceldocker.jar"]

@@ -1,3 +1,4 @@
+import org.example.App;
 import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
@@ -15,7 +16,7 @@ public class AppTest {
     public void testKelvinToCelsius() {
         float kelvin = 273.15f;
         float expectedCelsius = 0.0f;
-        float actualCelsius = App.KelvinToCelsius(kelvin);
+        float actualCelsius = App.kelvinToCelsius(kelvin);
         assertEquals(expectedCelsius, actualCelsius, 0.01f, "Kelvin to Celsius conversion failed.");
     }
 }
