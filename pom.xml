@@ -17,18 +17,30 @@
   </properties>
 
   <dependencies>
-    <!-- Your existing dependencies -->
     <dependency>
       <groupId>org.junit.jupiter</groupId>
       <artifactId>junit-jupiter-api</artifactId>
       <version>5.7.0</version>
       <scope>test</scope>
     </dependency>
-    <!-- Any additional dependencies you may have -->
   </dependencies>
 
   <build>
+    <finalName>FarToCelDocker</finalName>
     <plugins>
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-jar-plugin</artifactId>
+        <version>3.2.0</version>
+        <configuration>
+          <archive>
+            <manifest>
+              <mainClass>main.App</mainClass>
+            </manifest>
+          </archive>
+        </configuration>
+      </plugin>
+      <!-- Add JaCoCo plugin -->
       <plugin>
         <groupId>org.jacoco</groupId>
         <artifactId>jacoco-maven-plugin</artifactId>
@@ -46,22 +58,8 @@
               <goal>report</goal>
             </goals>
           </execution>
-          <execution>
-            <id>post-unit-test</id>
-            <phase>test</phase>
-            <goals>
-              <goal>report</goal>
-            </goals>
-            <configuration>
-              <!-- Sets the path to the file which contains the execution data. -->
-              <dataFile>target/jacoco.exec</dataFile>
-              <!-- Sets the output directory for the code coverage report. -->
-              <outputDirectory>target/site/jacoco</outputDirectory>
-            </configuration>
-          </execution>
         </executions>
       </plugin>
-      <!-- Any additional plugins you may have -->
     </plugins>
   </build>
 </project>
